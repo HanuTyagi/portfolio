@@ -1,0 +1,45 @@
+import CyberBackground from "@/components/CyberBackground";
+import Hero from "@/components/Hero";
+import Stats from "@/components/Stats";
+import Projects from "@/components/Projects";
+import Experience from "@/components/Experience";
+import Skills from "@/components/Skills";
+import Scanner from "@/components/Scanner";
+import IdleProtocol from "@/components/IdleProtocol";
+
+export default function Home() {
+  return (
+    <main className="bg-[#05080d] min-h-screen relative overflow-x-hidden">
+      <CyberBackground />
+      <IdleProtocol />
+      <Hero />
+      <Stats />
+      <Skills />
+      <Experience />
+      <Projects />
+      <section id="contact" className="relative z-20 bg-black/40 border-t border-white/10 py-10 px-4 md:px-12">
+        <div className="max-w-7xl mx-auto text-center">
+          <h3 className="text-2xl text-white font-semibold mb-3">Connect</h3>
+          <p className="text-slate-300 mb-4">
+            Open to cybersecurity research, penetration testing, and security engineering collaborations.
+          </p>
+          <div className="flex flex-wrap justify-center gap-4 text-sm mt-6">
+            <a className="text-emerald-300 hover:text-emerald-200" href="mailto:hanutyagi9@gmail.com">hanutyagi9@gmail.com</a>
+            <span className="text-slate-500">|</span>
+            <a className="text-emerald-300 hover:text-emerald-200" href="tel:+917983475910">+91 79834 75910</a>
+            <span className="text-slate-500">|</span>
+            <a className="text-emerald-300 hover:text-emerald-200" href="https://github.com/HanuTyagi" target="_blank" rel="noreferrer">GitHub</a>
+            <span className="text-slate-500">|</span>
+            <a className="text-emerald-300 hover:text-emerald-200" href="https://tryhackme.com/p/BhavishyaTyagi" target="_blank" rel="noreferrer">TryHackMe</a>
+            <span className="text-slate-500">|</span>
+            <a className="text-emerald-300 hover:text-emerald-200" href="https://www.linkedin.com/in/Bhavishya-Hanu/" target="_blank" rel="noreferrer">LinkedIn</a>
+          </div>
+        </div>
+      </section>
+      <footer className="relative z-50 py-8 text-center text-gray-500 text-sm flex flex-col items-center gap-4 bg-black/60 backdrop-blur-sm border-t border-emerald-500/10">
+        <div>© {new Date().getFullYear()} Bhavishya Tyagi.</div>
+        <Scanner />
+      </footer>
+    </main>
+  );
+}
