@@ -6,7 +6,7 @@ import KonamiCode from "@/components/KonamiCode";
 const jetbrainsMono = JetBrains_Mono({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
-  title: "Bhavishya Tyagi | Cyber Security Portfolio",
+  title: "Bhavishya Tyagi | Portfolio",
   description: "Portfolio of Bhavishya Tyagi, Cyber Security Professional.",
 };
 
