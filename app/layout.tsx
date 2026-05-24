@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { JetBrains_Mono } from "next/font/google";
 import "./globals.css";
 import KonamiCode from "@/components/KonamiCode";
+import { Analytics } from '@vercel/analytics/next';
 
 const jetbrainsMono = JetBrains_Mono({ subsets: ["latin"] });
 
@@ -20,6 +21,7 @@ export default function RootLayout({
       <body className={jetbrainsMono.className}>
         <KonamiCode />
         {children}
+        <Analytics />
         {/* Console Secret Script */}
         <script dangerouslySetInnerHTML={{
           __html: `
