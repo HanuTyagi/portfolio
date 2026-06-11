@@ -35,11 +35,11 @@ export default function Certifications() {
   ];
 
   return (
-    <main className="bg-[#05080d] min-h-screen relative overflow-x-hidden text-emerald-50 font-mono selection:bg-emerald-500/30">
+    <main className="bg-[var(--color-background)] min-h-screen relative overflow-x-hidden text-slate-100 font-mono selection:bg-[var(--color-primary)]/30">
       <CyberBackground />
       
       <div className="relative z-10 max-w-5xl mx-auto px-6 py-24">
-        <Link href="/" className="inline-flex items-center text-emerald-400 hover:text-emerald-300 mb-12 transition-colors group">
+        <Link href="/" className="inline-flex items-center animated-link mb-12 transition-colors group">
           <span className="mr-2 group-hover:-translate-x-1 transition-transform">←</span>
           [ return to / ]
         </Link>
@@ -52,22 +52,22 @@ export default function Certifications() {
           
           {/* Left Column */}
           <div className="space-y-12">
-            <section className="bg-black/60 p-6 rounded border border-emerald-500/20 backdrop-blur-sm">
-              <h2 className="text-2xl font-bold text-emerald-400 border-b border-emerald-500/30 pb-2 mb-4">
+            <section className="bg-black/60 p-6 rounded border border-[var(--color-accent)]/30 backdrop-blur-sm">
+              <h2 className="text-2xl font-bold text-[var(--color-secondary)] border-b border-[var(--color-secondary)]/30 pb-2 mb-4">
                 Current Objectives
               </h2>
               <ul className="space-y-3 text-slate-300">
                 {prep.map((item, i) => (
                   <li key={i} className="flex items-start">
-                    <span className="text-emerald-500 mr-2">»</span>
+                    <span className="text-[var(--color-primary)] mr-2">»</span>
                     <span>Preparing for <strong className="text-white">{item}</strong></span>
                   </li>
                 ))}
               </ul>
             </section>
 
-            <section className="bg-black/60 p-6 rounded border border-emerald-500/20 backdrop-blur-sm">
-              <h2 className="text-2xl font-bold text-emerald-400 border-b border-emerald-500/30 pb-2 mb-4">
+            <section className="bg-black/60 p-6 rounded border border-[var(--color-accent)]/30 backdrop-blur-sm">
+              <h2 className="text-2xl font-bold text-[var(--color-secondary)] border-b border-[var(--color-secondary)]/30 pb-2 mb-4">
                 Currently Learning
               </h2>
               <div className="space-y-6">
@@ -83,13 +83,13 @@ export default function Certifications() {
 
           {/* Right Column */}
           <div className="space-y-12">
-             <section className="bg-black/60 p-6 rounded border border-emerald-500/20 backdrop-blur-sm">
-              <h2 className="text-2xl font-bold text-emerald-400 border-b border-emerald-500/30 pb-2 mb-4">
+             <section className="bg-black/60 p-6 rounded border border-[var(--color-accent)]/30 backdrop-blur-sm">
+              <h2 className="text-2xl font-bold text-[var(--color-secondary)] border-b border-[var(--color-secondary)]/30 pb-2 mb-4">
                 Active Certifications
               </h2>
               <ul className="space-y-3 text-slate-300">
                   <li className="flex items-start">
-                    <span className="text-emerald-500 mr-2">»</span>
+                    <span className="text-[var(--color-primary)] mr-2">»</span>
                     <span><strong>Certified Ethical Hacker (CEH v12)</strong> - Passed 1st attempt during B.Tech</span>
                   </li>
               </ul>

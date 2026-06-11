@@ -29,11 +29,11 @@ export default function Hobbies() {
   ];
 
   return (
-    <main className="bg-[#05080d] min-h-screen relative overflow-x-hidden text-emerald-50 font-mono selection:bg-emerald-500/30">
+    <main className="bg-[var(--color-background)] min-h-screen relative overflow-x-hidden text-slate-100 font-mono selection:bg-[var(--color-primary)]/30">
       <CyberBackground />
       
       <div className="relative z-10 max-w-5xl mx-auto px-6 py-24">
-        <Link href="/" className="inline-flex items-center text-emerald-400 hover:text-emerald-300 mb-12 transition-colors group">
+        <Link href="/" className="inline-flex items-center animated-link mb-12 transition-colors group">
           <span className="mr-2 group-hover:-translate-x-1 transition-transform">←</span>
           [ return to / ]
         </Link>
@@ -41,7 +41,7 @@ export default function Hobbies() {
         <h1 className="text-4xl md:text-6xl font-bold mb-6 mt-8 text-white glitch-text tracking-tighter" data-text="./idle_mode.sh">
           ./idle_mode.sh
         </h1>
-        <p className="text-emerald-500/80 mb-12 text-lg">System idle. Engaging entertainment protocols...</p>
+        <p className="text-[var(--color-primary)]/80 mb-12 text-lg">System idle. Engaging entertainment protocols...</p>
 
         {/* Web Novels Section */}
         <section className="bg-black/60 p-8 rounded border border-blue-500/20 backdrop-blur-md mb-8">
