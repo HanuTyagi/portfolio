@@ -46,11 +46,11 @@ export default function Arsenal() {
   ];
 
   return (
-    <main className="bg-[#05080d] min-h-screen relative overflow-x-hidden text-emerald-50 font-mono selection:bg-emerald-500/30">
+    <main className="bg-[var(--color-background)] min-h-screen relative overflow-x-hidden text-slate-100 font-mono selection:bg-[var(--color-primary)]/30">
       <CyberBackground />
       
       <div className="relative z-10 max-w-6xl mx-auto px-6 py-24">
-        <Link href="/" className="inline-flex items-center text-emerald-400 hover:text-emerald-300 mb-12 transition-colors group">
+        <Link href="/" className="inline-flex items-center animated-link mb-12 transition-colors group">
           <span className="mr-2 group-hover:-translate-x-1 transition-transform">←</span>
           [ return to / ]
         </Link>
@@ -66,15 +66,15 @@ export default function Arsenal() {
               href={project.link} 
               target="_blank" 
               rel="noopener noreferrer"
-              className="block p-6 rounded border border-emerald-500/20 bg-black/60 hover:bg-emerald-500/10 hover:border-emerald-500/50 transition-all backdrop-blur-sm group hover:shadow-[3px_0_0_rgba(255,0,0,0.5),-3px_0_0_rgba(0,255,255,0.5)] hover:-translate-x-1"
+              className="interactive-card block p-6 rounded border border-[var(--color-accent)]/30 bg-black/60 hover:bg-[var(--color-primary)]/10 hover:border-[var(--color-primary)]/50 transition-all backdrop-blur-sm group hover:shadow-[3px_0_0_rgba(255,0,110,0.5),-3px_0_0_rgba(0,217,255,0.5)] hover:-translate-x-1"
             >
-              <h3 className="text-xl font-bold text-emerald-400 mb-3 group-hover:text-emerald-300">
+              <h3 className="text-xl font-bold text-[var(--color-secondary)] mb-3 group-hover:text-white">
                 {project.title}
               </h3>
               <p className="text-slate-400 text-sm leading-relaxed">
                 {project.description}
               </p>
-              <div className="mt-4 text-xs text-emerald-500/50 group-hover:text-emerald-400 transition-colors">
+              <div className="mt-4 text-xs text-[var(--color-primary)]/70 group-hover:text-[var(--color-secondary)] transition-colors">
                 [ execute ]
               </div>
             </a>

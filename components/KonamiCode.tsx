@@ -107,6 +107,7 @@ const TerminalSequence = ({ onClose }: { onClose: () => void }) => {
 export default function KonamiCode() {
     const [inputSequence, setInputSequence] = useState<string[]>([]);
     const [breachStage, setBreachStage] = useState<"idle" | "shaking" | "terminal">("idle");
+    const transitionTimeoutRef = useRef<ReturnType<typeof setTimeout> | null>(null);
 
     useEffect(() => {
         const handleKeyDown = (e: KeyboardEvent) => {
@@ -121,7 +122,7 @@ export default function KonamiCode() {
                 if (newSequence.join(",") === KONAMI_CODE.join(",")) {
                     // Trigger breach
                     setBreachStage("shaking");
-                    setTimeout(() => {
+                    transitionTimeoutRef.current = setTimeout(() => {
                         setBreachStage("terminal");
                     }, 1500); // Shake for 1.5s then show terminal
                     return [];
@@ -132,7 +133,12 @@ export default function KonamiCode() {
         };
 
         window.addEventListener("keydown", handleKeyDown);
-        return () => window.removeEventListener("keydown", handleKeyDown);
+        return () => {
+            window.removeEventListener("keydown", handleKeyDown);
+            if (transitionTimeoutRef.current) {
+                clearTimeout(transitionTimeoutRef.current);
+            }
+        };
     }, [breachStage]);
 
     // Apply shake effect to body

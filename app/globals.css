@@ -1,55 +1,149 @@
 @import "tailwindcss";
 
 :root {
-  --background: #05080d;
-  --foreground: #e6f1ff;
+  --color-background: #0a0e27;
+  --color-foreground: #eef4ff;
+  --color-primary: #ff006e;
+  --color-secondary: #00d9ff;
+  --color-accent: #8338ec;
 }
 
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: "Inter", "Segoe UI", "Roboto", "Helvetica Neue", Arial, sans-serif;
+  background: var(--color-background);
+  color: var(--color-foreground);
+  font-family: var(--font-jetbrains-mono), "JetBrains Mono", monospace;
   overflow-x: hidden;
   background-image:
-    radial-gradient(circle at 20% 20%, rgba(31, 210, 143, 0.08), transparent 35%),
-    radial-gradient(circle at 80% 0%, rgba(0, 255, 170, 0.06), transparent 30%),
+    radial-gradient(circle at 15% 20%, rgba(255, 0, 110, 0.12), transparent 32%),
+    radial-gradient(circle at 80% 5%, rgba(0, 217, 255, 0.11), transparent 26%),
+    radial-gradient(circle at 60% 90%, rgba(131, 56, 236, 0.12), transparent 30%),
     linear-gradient(rgba(255, 255, 255, 0.02) 1px, transparent 1px),
     linear-gradient(90deg, rgba(255, 255, 255, 0.02) 1px, transparent 1px);
-  background-size: auto, auto, 28px 28px, 28px 28px;
-  cursor: crosshair;
+  background-size: auto, auto, auto, 26px 26px, 26px 26px;
 }
 
-a, button, [role="button"], select, input {
+.font-body {
+  font-family: var(--font-jetbrains-mono), "JetBrains Mono", monospace;
+}
+
+.heading-font {
+  font-family: var(--font-dm-sans), "DM Sans", sans-serif;
+}
+
+a,
+button,
+[role="button"],
+select,
+input {
   cursor: pointer;
+}
+
+.interactive-card {
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  background: rgba(10, 14, 39, 0.6);
+  backdrop-filter: blur(8px);
+  transition: transform 220ms ease, box-shadow 220ms ease, border-color 220ms ease, background 220ms ease;
+}
+
+.interactive-card:hover {
+  transform: translateY(-4px);
+  border-color: rgba(255, 0, 110, 0.45);
+  box-shadow: 0 18px 36px rgba(0, 0, 0, 0.35), 0 0 26px rgba(0, 217, 255, 0.14);
+  background: rgba(20, 27, 61, 0.72);
+}
+
+.interactive-button {
+  padding: 0.75rem 1.5rem;
+  border: 1px solid rgba(255, 0, 110, 0.8);
+  color: var(--color-primary);
+  background: rgba(255, 0, 110, 0.08);
+  transition: transform 180ms ease, box-shadow 180ms ease, background-color 180ms ease, color 180ms ease;
+  font-family: var(--font-jetbrains-mono), "JetBrains Mono", monospace;
+}
+
+.interactive-button:hover {
+  transform: scale(1.04);
+  color: #fff;
+  background: rgba(255, 0, 110, 0.2);
+  box-shadow: 0 0 22px rgba(255, 0, 110, 0.45);
+}
+
+.interactive-button-secondary {
+  padding: 0.75rem 1.5rem;
+  border: 1px solid rgba(0, 217, 255, 0.45);
+  color: var(--color-secondary);
+  background: rgba(0, 217, 255, 0.05);
+  transition: transform 180ms ease, box-shadow 180ms ease, background-color 180ms ease, color 180ms ease;
+  font-family: var(--font-jetbrains-mono), "JetBrains Mono", monospace;
+}
+
+.interactive-button-secondary:hover {
+  transform: scale(1.04);
+  color: #fff;
+  background: rgba(0, 217, 255, 0.16);
+  box-shadow: 0 0 22px rgba(0, 217, 255, 0.35);
+}
+
+.animated-link {
+  position: relative;
+  color: var(--color-secondary);
+  transition: color 180ms ease;
+}
+
+.animated-link::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: -2px;
+  width: 100%;
+  height: 2px;
+  background: linear-gradient(90deg, var(--color-primary), var(--color-secondary));
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 220ms ease;
+}
+
+.animated-link:hover {
+  color: #fff;
+}
+
+.animated-link:hover::after {
+  transform: scaleX(1);
 }
 
 /* Custom Scrollbar */
 ::-webkit-scrollbar {
   width: 8px;
+  height: 8px;
 }
+
 ::-webkit-scrollbar-track {
-  background: #121212;
+  background: #06091d;
+  border-left: 1px solid rgba(131, 56, 236, 0.25);
 }
+
 ::-webkit-scrollbar-thumb {
-  background: #333;
+  background: var(--color-accent);
   border-radius: 4px;
 }
+
 ::-webkit-scrollbar-thumb:hover {
-  background: #555;
+  background: var(--color-primary);
 }
 
 ::selection {
-  background: rgba(0, 255, 170, 0.3);
-  color: #fff;
+  background-color: rgba(255, 0, 110, 0.35);
+  color: #ffffff;
+  text-shadow: none;
 }
 
 /* Scanner Easter Egg Styles */
-.scanning-active a, 
+.scanning-active a,
 .scanning-active button,
 .scanning-active [role="button"] {
-    outline: 1px solid rgba(239, 68, 68, 0.8) !important;
-    box-shadow: 0 0 8px rgba(239, 68, 68, 0.4) !important;
-    transition: outline 0.1s, box-shadow 0.1s;
+  outline: 1px solid rgba(255, 0, 110, 0.85) !important;
+  box-shadow: 0 0 8px rgba(255, 0, 110, 0.4) !important;
+  transition: outline 0.1s, box-shadow 0.1s;
 }
 
 /* Glitch Effect */
@@ -57,6 +151,7 @@ a, button, [role="button"], select, input {
   position: relative;
   display: inline-block;
 }
+
 .glitch-text::before,
 .glitch-text::after {
   content: attr(data-text);
@@ -67,15 +162,17 @@ a, button, [role="button"], select, input {
   height: 100%;
   background: transparent;
 }
+
 .glitch-text::before {
   left: 2px;
-  text-shadow: -2px 0 red;
+  text-shadow: -2px 0 var(--color-primary);
   clip: rect(44px, 450px, 56px, 0);
   animation: glitch-anim 5s infinite linear alternate-reverse;
 }
+
 .glitch-text::after {
   left: -2px;
-  text-shadow: -2px 0 blue;
+  text-shadow: -2px 0 var(--color-secondary);
   clip: rect(44px, 450px, 56px, 0);
   animation: glitch-anim2 5s infinite linear alternate-reverse;
 }
@@ -103,6 +200,7 @@ a, button, [role="button"], select, input {
   95% { clip: rect(22px, 9999px, 95px, 0); }
   100% { clip: rect(69px, 9999px, 2px, 0); }
 }
+
 @keyframes glitch-anim2 {
   0% { clip: rect(59px, 9999px, 96px, 0); }
   5% { clip: rect(71px, 9999px, 14px, 0); }
@@ -127,14 +225,13 @@ a, button, [role="button"], select, input {
   100% { clip: rect(89px, 9999px, 2px, 0); }
 }
 
-/* Image Glitch */
 .bg-glitch {
   position: absolute;
   top: 0;
   left: 0;
   width: 100%;
   height: 100%;
-  background-image: url('/hacker.png');
+  background-image: url("/hacker.png");
   background-size: cover;
   background-position: center;
   opacity: 0;
@@ -174,31 +271,4 @@ a, button, [role="button"], select, input {
 
 .animate-matrix-fall {
   animation: matrix-fall linear infinite;
-}
-
-/* Custom Text Selection */
-::selection {
-  background-color: #10b981; /* Emerald 500 */
-  color: #000000;
-  text-shadow: none;
-}
-
-/* Custom Scrollbar */
-::-webkit-scrollbar {
-  width: 8px;
-  height: 8px;
-}
-
-::-webkit-scrollbar-track {
-  background: #03060a;
-  border-left: 1px solid rgba(16, 185, 129, 0.1);
-}
-
-::-webkit-scrollbar-thumb {
-  background: #10b981;
-  border-radius: 4px;
-}
-
-::-webkit-scrollbar-thumb:hover {
-  background: #34d399; /* Emerald 400 */
 }

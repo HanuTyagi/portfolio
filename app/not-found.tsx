@@ -3,7 +3,7 @@ import CyberBackground from "@/components/CyberBackground";
 
 export default function NotFound() {
   return (
-    <main className="bg-[#05080d] min-h-screen relative overflow-x-hidden text-emerald-50 font-mono selection:bg-emerald-500/30 flex items-center justify-center">
+    <main className="bg-[var(--color-background)] min-h-screen relative overflow-x-hidden text-slate-100 font-mono selection:bg-[var(--color-primary)]/30 flex items-center justify-center">
       <CyberBackground />
       
       <div className="relative z-10 max-w-2xl mx-auto px-6 py-24 text-center bg-black/80 p-12 rounded border border-red-500/30 backdrop-blur-md shadow-[0_0_30px_rgba(239,68,68,0.1)]">
