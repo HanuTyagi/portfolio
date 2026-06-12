@@ -12,12 +12,13 @@ const KONAMI_CODE = [
 const TerminalSequence = ({ onClose }: { onClose: () => void }) => {
     const [lines, setLines] = useState<string[]>([]);
     const sequence = [
-        "INITIATING OVERRIDE PROTOCOL...",
-        "BYPASSING MAINFRAME FIREWALLS...",
-        "DECRYPTING ADMIN CREDENTIALS...",
-        "ACCESS GRANTED.",
-        "WELCOME, SYSTEM ADMINISTRATOR.",
-        "THREAT MAP: ONLINE."
+        "BACKDOOR ACCESSED :: KONAMI BRIEFING",
+        "DECRYPTING INCIDENT REPORT...",
+        "PROFESSIONAL SUMMARY: analyst builds tools for malware analysis, pentesting, and evidence-driven defense.",
+        "EVIDENCE ARTIFACTS: CEH v12 | Google Cybersecurity | ISC2 CC | Cisco CCNA v7.",
+        "ASCII PAYLOAD: < ethical_hacker detected />",
+        "HINTS: try console commands pentest(), decrypt(), exploit(), patch().",
+        "SECRET NOTE: curiosity is welcome; responsible disclosure is the real exploit."
     ];
 
     useEffect(() => {
@@ -39,18 +40,18 @@ const TerminalSequence = ({ onClose }: { onClose: () => void }) => {
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
-            className="fixed inset-0 z-[99999] bg-black text-emerald-500 font-mono flex flex-col p-8 overflow-hidden"
+            className="fixed inset-0 z-[99999] bg-[#050713] text-cyan-300 font-mono flex flex-col p-8 overflow-hidden"
         >
             {/* Radar Background */}
             <div className="absolute inset-0 flex items-center justify-center opacity-20 pointer-events-none">
-                <div className="relative w-[800px] h-[800px] border border-emerald-500 rounded-full">
-                    <div className="absolute inset-0 border border-emerald-500/50 rounded-full scale-75"></div>
-                    <div className="absolute inset-0 border border-emerald-500/30 rounded-full scale-50"></div>
-                    <div className="absolute inset-0 border border-emerald-500/10 rounded-full scale-25"></div>
-                    <div className="absolute top-1/2 left-0 w-full h-[1px] bg-emerald-500/50"></div>
-                    <div className="absolute left-1/2 top-0 w-[1px] h-full bg-emerald-500/50"></div>
+                <div className="relative w-[800px] h-[800px] border border-cyan-500 rounded-full">
+                    <div className="absolute inset-0 border border-cyan-500/50 rounded-full scale-75"></div>
+                    <div className="absolute inset-0 border border-cyan-500/30 rounded-full scale-50"></div>
+                    <div className="absolute inset-0 border border-cyan-500/10 rounded-full scale-25"></div>
+                    <div className="absolute top-1/2 left-0 w-full h-[1px] bg-cyan-500/50"></div>
+                    <div className="absolute left-1/2 top-0 w-[1px] h-full bg-cyan-500/50"></div>
                     {/* Radar Sweep */}
-                    <div className="absolute top-1/2 left-1/2 w-1/2 h-1/2 origin-top-left animate-[spin_4s_linear_infinite] bg-gradient-to-br from-emerald-500/40 to-transparent rounded-br-full border-r border-b border-emerald-400"></div>
+                    <div className="absolute top-1/2 left-1/2 w-1/2 h-1/2 origin-top-left animate-[spin_4s_linear_infinite] bg-gradient-to-br from-pink-500/40 to-transparent rounded-br-full border-r border-b border-pink-400"></div>
                 </div>
             </div>
 
@@ -70,7 +71,7 @@ const TerminalSequence = ({ onClose }: { onClose: () => void }) => {
                     <motion.span
                         animate={{ opacity: [0, 1, 0] }}
                         transition={{ repeat: Infinity, duration: 0.8 }}
-                        className="inline-block w-4 h-8 bg-emerald-500 align-middle"
+                        className="inline-block w-4 h-8 bg-cyan-400 align-middle"
                     />
                 )}
             </div>
@@ -119,6 +120,8 @@ export default function KonamiCode() {
                 }
 
                 if (newSequence.join(",") === KONAMI_CODE.join(",")) {
+                    window.dispatchEvent(new CustomEvent("investigation:console", { detail: "decrypt" }));
+                    window.dispatchEvent(new CustomEvent("investigation:egg", { detail: { egg: "konami_briefing" } }));
                     // Trigger breach
                     setBreachStage("shaking");
                     setTimeout(() => {

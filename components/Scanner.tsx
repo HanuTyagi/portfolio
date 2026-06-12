@@ -3,54 +3,54 @@
 import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { useRouter } from "next/navigation";
+import { useInvestigation } from "@/context/InvestigationContext";
 
 export default function Scanner() {
     const router = useRouter();
+    const { increaseThreat, unlockEgg } = useInvestigation();
     const [isScanning, setIsScanning] = useState(false);
-    const [alertText, setAlertText] = useState("[ Initialize Threat Scan ]");
+    const [surfaceCount, setSurfaceCount] = useState(0);
+    const [alertText, setAlertText] = useState("[ Initialize Vulnerability Scanner ]");
 
     const triggerScan = () => {
         if (isScanning) {
-            setAlertText("[ THREAT DETECTED! DEPLOYING ARSENAL... ]");
-            setTimeout(() => {
-                router.push("/arsenal");
-            }, 800);
+            setAlertText("[ SCAN ACTIVE ] exploitable endpoints routed to arsenal...");
+            setTimeout(() => router.push("/arsenal"), 800);
             return;
         }
 
+        const count = document.querySelectorAll("a, button, [role='button'], input, [data-vulnerability]").length;
+        setSurfaceCount(count);
         setIsScanning(true);
-        setAlertText("[ Scanning System... ]");
+        setAlertText(`[SCAN ACTIVE] ${count} exploitable endpoints found`);
+        unlockEgg("scanner_sweep");
+        increaseThreat(15, "vulnerability scanner");
         setTimeout(() => {
             setIsScanning(false);
-            setAlertText("[ Initialize Threat Scan ]");
-        }, 3000);
+            setAlertText("[ Initialize Vulnerability Scanner ]");
+        }, 3500);
     };
 
     useEffect(() => {
-        if (isScanning) {
-            document.body.classList.add("scanning-active");
-        } else {
-            document.body.classList.remove("scanning-active");
-        }
-
-        return () => {
-            document.body.classList.remove("scanning-active");
-        };
+        document.body.classList.toggle("scanning-active", isScanning);
+        return () => document.body.classList.remove("scanning-active");
     }, [isScanning]);
 
     return (
         <>
-            <div className="text-center mt-4">
+            <div className="mt-4 text-center">
                 <button 
                     onClick={triggerScan}
-                    className={`text-xs font-mono px-3 py-1 rounded transition-colors ${
-                        alertText.includes("THREAT DETECTED") 
-                        ? "text-red-400 border border-red-500 bg-red-500/10" 
-                        : "text-emerald-400 hover:text-emerald-300 border border-emerald-400/30 hover:border-emerald-300"
+                    className={`rounded px-3 py-1 font-mono text-xs transition-colors ${
+                        isScanning
+                        ? "border border-red-500 bg-red-500/10 text-red-300"
+                        : "border border-cyan-400/30 text-cyan-300 hover:border-pink-300 hover:text-pink-200"
                     }`}
+                    title={isScanning ? `Found ${surfaceCount} interactive surfaces. Red=vulnerable, blue=patched.` : "Scan for interactive surfaces"}
                 >
                     {alertText}
                 </button>
+                {isScanning && <p className="mt-2 font-mono text-[10px] text-slate-400">Hover highlighted nodes for threat level + exploitation guide.</p>}
             </div>
 
             <AnimatePresence>
@@ -59,8 +59,8 @@ export default function Scanner() {
                         initial={{ top: "-10%" }}
                         animate={{ top: "110%" }}
                         exit={{ opacity: 0 }}
-                        transition={{ duration: 2.5, ease: "linear" }}
-                        className="fixed left-0 w-full h-1 bg-red-500 shadow-[0_0_20px_5px_rgba(239,68,68,0.5)] z-[9999] pointer-events-none"
+                        transition={{ duration: 2.8, ease: "linear" }}
+                        className="pointer-events-none fixed left-0 z-[9999] h-1 w-full bg-red-500 shadow-[0_0_20px_5px_rgba(239,68,68,0.5)]"
                     />
                 )}
             </AnimatePresence>

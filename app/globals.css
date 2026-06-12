@@ -202,3 +202,85 @@ a, button, [role="button"], select, input {
 ::-webkit-scrollbar-thumb:hover {
   background: #34d399; /* Emerald 400 */
 }
+
+/* Investigation Portal theme extensions */
+:root {
+  --background: #050713;
+  --foreground: #e6f1ff;
+  --cyber-pink: #ff006e;
+  --cyber-cyan: #00d9ff;
+  --cyber-purple: #8338ec;
+}
+
+body {
+  font-family: "DM Sans", "Inter", "Segoe UI", system-ui, sans-serif;
+  background-image:
+    radial-gradient(circle at 20% 15%, rgba(255, 0, 110, 0.12), transparent 34%),
+    radial-gradient(circle at 78% 0%, rgba(0, 217, 255, 0.1), transparent 30%),
+    radial-gradient(circle at 50% 75%, rgba(131, 56, 236, 0.09), transparent 36%),
+    linear-gradient(rgba(255, 255, 255, 0.025) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255, 255, 255, 0.025) 1px, transparent 1px);
+  cursor: default;
+}
+
+.font-mono, code, pre {
+  font-family: "JetBrains Mono", "Space Mono", "IBM Plex Mono", ui-monospace, SFMono-Regular, Menlo, monospace;
+}
+
+a, button, [role="button"], select, input {
+  cursor: pointer;
+}
+
+button:focus-visible,
+a:focus-visible,
+input:focus-visible {
+  outline: 2px solid var(--cyber-cyan);
+  outline-offset: 3px;
+}
+
+::selection {
+  background-color: rgba(255, 0, 110, 0.35);
+  color: #fff;
+}
+
+.scanning-active a,
+.scanning-active button,
+.scanning-active [role="button"],
+.scanning-active input,
+.scanning-active [data-vulnerability] {
+  outline: 1px solid rgba(239, 68, 68, 0.9) !important;
+  box-shadow: 0 0 12px rgba(239, 68, 68, 0.45), inset 0 0 12px rgba(239, 68, 68, 0.08) !important;
+}
+
+.scanning-active a:nth-of-type(even),
+.scanning-active button:nth-of-type(even),
+.scanning-active [data-vulnerability="skill-card"] {
+  outline-color: rgba(0, 217, 255, 0.85) !important;
+  box-shadow: 0 0 12px rgba(0, 217, 255, 0.35), inset 0 0 12px rgba(0, 217, 255, 0.08) !important;
+}
+
+.scanning-active [data-vulnerability]::after {
+  content: "Threat: HIGH // guide: inspect, exploit in lab, document, patch";
+  position: absolute;
+  left: 1rem;
+  bottom: 1rem;
+  z-index: 20;
+  border: 1px solid rgba(255, 0, 110, 0.45);
+  background: rgba(0, 0, 0, 0.85);
+  color: #fecdd3;
+  padding: 0.35rem 0.5rem;
+  border-radius: 0.5rem;
+  font-family: "JetBrains Mono", ui-monospace, SFMono-Regular, Menlo, monospace;
+  font-size: 0.65rem;
+  opacity: 0;
+  transition: opacity 150ms ease;
+}
+
+.scanning-active [data-vulnerability]:hover::after {
+  opacity: 1;
+}
+
+@keyframes system-breach-pulse {
+  0%, 100% { filter: hue-rotate(0deg) contrast(1); }
+  50% { filter: hue-rotate(120deg) contrast(1.5); }
+}
